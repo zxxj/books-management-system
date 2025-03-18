@@ -12,6 +12,8 @@ async function bootstrap() {
   // 开启静态文件目录
   app.useStaticAssets(join(__dirname, '../uploads'), { prefix: '/uploads' });
 
+  // 允许跨域
+  app.enableCors();
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
