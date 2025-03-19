@@ -49,7 +49,10 @@ export const Register = () => {
   return (
     <>
       <Row>
-        <Col span={18} className="h-screen bg-black">
+        <Col
+          span={18}
+          className="h-screen bg-[url('/background.png')] bg-cover bg-center"
+        >
           <div>1111</div>
         </Col>
         <Col span={6} className="h-screen bg-white ">
