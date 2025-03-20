@@ -1,6 +1,7 @@
 import { apiInstance } from '..';
 
-interface CreateBookDto {
+interface BookDto {
+  id?: number;
   name: string;
   author: string;
   description: string;
@@ -15,7 +16,7 @@ export const list = (name?: string) => {
   });
 };
 
-export const create = (createBookDto: CreateBookDto) => {
+export const create = (createBookDto: BookDto) => {
   return apiInstance.post('/book/create', {
     name: createBookDto.name,
     author: createBookDto.author,
@@ -26,4 +27,14 @@ export const create = (createBookDto: CreateBookDto) => {
 
 export const listById = (id: number) => {
   return apiInstance.get(`/book/${id}`);
+};
+
+export const update = (bookObj: BookDto) => {
+  return apiInstance.put(`/book/update`, {
+    id: bookObj.id,
+    name: bookObj.name,
+    author: bookObj.author,
+    description: bookObj.description,
+    cover: bookObj.cover,
+  });
 };

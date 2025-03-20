@@ -60,7 +60,7 @@ export class BookController {
       fileFilter(req, file, callback) {
         const extname = path.extname(file.originalname);
 
-        if (['.png', '.jpg', '.gif'].includes(extname)) {
+        if (['.png', '.jpg', '.gif', '.webp'].includes(extname)) {
           callback(null, true);
         } else {
           callback(new BadRequestException('只能上传图片'), false);
