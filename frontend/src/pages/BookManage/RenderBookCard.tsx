@@ -1,7 +1,8 @@
-import { Button } from 'antd';
+import { Button, message } from 'antd';
 import { IBook } from './types';
 import { UpdateBookModal } from './UpdateBookModal';
 import { useState } from 'react';
+import { deleteById } from '../../api/book';
 
 export const RenderBookCard = ({
   book,
@@ -23,8 +24,14 @@ export const RenderBookCard = ({
     }
   };
 
-  const handleDelete = () => {
-    console.log('de');
+  const handleDelete = async (bookid: number) => {
+    try {
+      await deleteById(bookid);
+      message.success('删除成功!');
+      setRandom(Math.random());
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // 关闭Modal
@@ -65,7 +72,11 @@ export const RenderBookCard = ({
           >
             修改
           </Button>
-          <Button color="default" variant="solid" onClick={handleDelete}>
+          <Button
+            color="default"
+            variant="solid"
+            onClick={() => handleDelete(book.id)}
+          >
             删除
           </Button>
         </div>

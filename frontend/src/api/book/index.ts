@@ -38,3 +38,7 @@ export const update = (bookObj: BookDto) => {
     cover: bookObj.cover,
   });
 };
+
+export const deleteById = (id: number) => {
+  return apiInstance.delete(`/book/delete/${id}`);
+};
